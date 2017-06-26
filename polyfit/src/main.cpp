@@ -49,9 +49,14 @@ int main() {
 
   // TODO: use `polyfit` to fit a third order polynomial to the (x, y)
   // coordinates.
+  int order = 3;
+  Eigen::VectorXd coeffs(order+1); // order of an equation starts from 0
+  coeffs = polyfit(xvals,yvals,order);
 
   for (double x = 0; x <= 20; x += 1.0) {
     // TODO: use `polyeval` to evaluate the x values.
+	  double y = polyeval(coeffs,x);
+	  std::cout << y << std::endl;
   }
 
   // Expected output
